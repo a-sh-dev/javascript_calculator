@@ -41,24 +41,46 @@ const numberElArray = [
 ];
 
 // Functions
-const handleNumberClick = (numStr) => {
+const getValueAsStr = () => {
   const currentDisplayStr = valueEl.textContent;
+  return currentDisplayStr.split(',').join('');
+};
 
-  if (currentDisplayStr === '0') {
-    valueEl.textContent = numStr;
+const getValueAsNum = () => {
+  return parseFloat(getValueAsStr());
+};
+
+const setStrAsValue = (valueStr) => {
+  if (valueStr.at(-1) === '.') {
+    valueEl.textContent += '.';
+    return;
+  }
+  valueEl.textContent = parseFloat(valueStr).toLocaleString();
+};
+
+const handleNumberClick = (numStr) => {
+  const currentValueStr = getValueAsStr();
+
+  if (currentValueStr === '0') {
+    setStrAsValue(numStr);
   } else {
-    valueEl.textContent = parseFloat(
-      currentDisplayStr + numStr,
-    ).toLocaleString();
+    setStrAsValue(currentValueStr + numStr);
   }
 };
 
-// Event Listeners to numbers and buttons
+// Event Listeners to numbers and decimal
 numberElArray.map((number, i) => {
   // console.log(number);
   number.addEventListener('click', () => {
     handleNumberClick(i.toString());
   });
+});
+
+decimalEl.addEventListener('click', () => {
+  const currentValueStr = getValueAsStr();
+  if (!currentValueStr.includes('.')) {
+    setStrAsValue(currentValueStr + '.');
+  }
 });
 
 // Setup time

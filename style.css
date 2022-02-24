@@ -11,13 +11,14 @@
   --color-light: #ede8db;
   --color-base: #513349;
   --color-bright: #cb9729;
+  --color-bg: #bcd1d0;
 }
 
 body {
   display: grid;
   place-content: center;
   height: 100vh;
-  background-color: lightgrey;
+  background: var(--color-bg);
   font-family: "Helvetica Neue", sans-serif;
 }
 
