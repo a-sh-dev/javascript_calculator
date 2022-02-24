@@ -1,7 +1,7 @@
 // DOM Elements
 const hourEl = document.querySelector('.hour');
 const minuteEl = document.querySelector('.minute');
-const displayEl = document.querySelector('.display');
+const valueEl = document.querySelector('.value');
 
 // Function elements
 const acEl = document.querySelector('.ac');
@@ -39,6 +39,27 @@ const numberElArray = [
   number8El,
   number9El,
 ];
+
+// Functions
+const handleNumberClick = (numStr) => {
+  const currentDisplayStr = valueEl.textContent;
+
+  if (currentDisplayStr === '0') {
+    valueEl.textContent = numStr;
+  } else {
+    valueEl.textContent = parseFloat(
+      currentDisplayStr + numStr,
+    ).toLocaleString();
+  }
+};
+
+// Event Listeners to numbers and buttons
+numberElArray.map((number, i) => {
+  // console.log(number);
+  number.addEventListener('click', () => {
+    handleNumberClick(i.toString());
+  });
+});
 
 // Setup time
 const updateTime = () => {
