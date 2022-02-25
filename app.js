@@ -55,7 +55,13 @@ const setStrAsValue = (valueStr) => {
     valueEl.textContent += '.';
     return;
   }
-  valueEl.textContent = parseFloat(valueStr).toLocaleString();
+  const [wholeNumStr, decimalStr] = valueStr.split('.');
+  if (decimalStr) {
+    valueEl.textContent =
+      parseFloat(wholeNumStr).toLocaleString() + '.' + decimalStr;
+  } else {
+    valueEl.textContent = parseFloat(valueStr).toLocaleString();
+  }
 };
 
 const handleNumberClick = (numStr) => {
@@ -67,6 +73,33 @@ const handleNumberClick = (numStr) => {
     setStrAsValue(currentValueStr + numStr);
   }
 };
+
+// Event Listeners to Functions
+acEl.addEventListener('click', () => {
+  setStrAsValue('0');
+});
+
+pmEl.addEventListener('click', () => {
+  const currentValueNum = getValueAsNum();
+  const currentValueStr = getValueAsStr();
+
+  if (currentValueStr === '-0') {
+    setStrAsValue('0');
+    return;
+  }
+
+  if (currentValueNum >= 0) {
+    setStrAsValue('-' + currentValueStr);
+  } else {
+    setStrAsValue(currentValueStr.substring(1));
+  }
+});
+
+percentEl.addEventListener('click', () => {
+  const currentValueNum = getValueAsNum();
+  const newValueNum = currentValueNum / 100;
+  setStrAsValue(newValueNum.toString());
+});
 
 // Event Listeners to numbers and decimal
 numberElArray.map((number, i) => {
