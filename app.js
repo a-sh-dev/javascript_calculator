@@ -1,7 +1,5 @@
 // DOM Elements imports
 import {
-  hourEl,
-  minuteEl,
   valueEl,
   acEl,
   pmEl,
@@ -14,6 +12,9 @@ import {
   decimalEl,
   numberElArray,
 } from './script/dom.js';
+
+// Import time function
+import { updateTime } from './script/time.js';
 
 // Variables
 let valueStrInMemory = null;
@@ -165,20 +166,5 @@ decimalEl.addEventListener('click', () => {
 });
 
 // Setup time
-const updateTime = () => {
-  const currentTime = new Date();
-
-  let currentHour = currentTime.getHours();
-  const currentMinute = currentTime.getMinutes();
-
-  // ! set to 12hrs instead of 24hrs
-  // if (currentHour > 12) {
-  //   currentHour -= 12;
-  // }
-
-  hourEl.textContent = currentHour.toString().padStart(2, '0');
-  minuteEl.textContent = currentMinute.toString().padStart(2, '0');
-};
-
 setInterval(updateTime, 1000);
 updateTime();
