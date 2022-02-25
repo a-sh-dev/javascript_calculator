@@ -24,27 +24,26 @@ body {
 
 .calculator {
   background: var(--color-darkest);
-  width: 35rem;
-  height: 74rem;
-  border-radius: 3.125rem;
+  width: clamp(18rem, 35vw, 26rem);
+  height: clamp(32rem, 80vh, 60rem);
+  border-radius: clamp(2rem, 2vw, 3rem);
   padding: 1rem;
   color: var(--color-white);
   position: relative;
 }
 
 .top_container {
-  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
-  height: 15rem;
+  height: clamp(5rem, 20%, 10rem);
 }
 
+/* display */
 .value {
-  font-size: 8.125rem;
+  font-size: clamp(4rem, 1rem + 4vw, 6rem);
   font-weight: 200;
-  height: 9.875rem;
+  margin-bottom: 3rem;
   text-align: right;
-  margin: 0 1rem 1rem 0;
 }
 
 .buttons_container {
@@ -52,16 +51,18 @@ body {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-gap: 1rem;
+  max-width: 100%;
+  place-items: center;
 }
 
 .button {
-  border-radius: 50%;
-  background-color: var(--color-base);
   aspect-ratio: 1;
-  height: 6.875rem;
+  background-color: var(--color-base);
+  border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 2.8rem;
+  height: clamp(2.25rem, 6.5vh, 5.25rem);
+  font-size: clamp(1.25rem, 1.65rem, 2.25rem);
   font-weight: 200;
   cursor: pointer;
   transition: filter 0.3s;
@@ -96,4 +97,16 @@ body {
   bottom: 0.8rem;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.status {
+  text-align: right;
+}
+
+.status img {
+  width: 60%;
+}
+
+.clock {
+  font-size: clamp(0.8rem, 0.85vw, 1.25rem);
 }
