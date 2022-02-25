@@ -16,9 +16,22 @@ import {
 // Import time function
 import { updateTime } from './script/time.js';
 
-// Variables
+// Variables & Constants
 let valueStrInMemory = null;
 let operatorInMemory = null;
+
+const numberKeys = [...Array(10)].map((n, i) => i.toString());
+const KEYDOWN_KEYS = [
+  ...numberKeys,
+  '.',
+  'Enter',
+  'Escape',
+  '+',
+  '-',
+  '=',
+  '*',
+  '/',
+];
 
 // Functions
 const resetMemory = () => {
@@ -149,10 +162,25 @@ const handlePercentClick = () => {
   resetMemory();
 };
 
+const handleDecimalClick = () => {
+  const currentValueStr = getValueAsStr();
+  if (!currentValueStr.includes('.')) {
+    setStrAsValue(currentValueStr + '.');
+  }
+};
+
+const handleEqualClick = () => {
+  if (valueStrInMemory) {
+    setStrAsValue(getResultOfOperationAsStr());
+    resetMemory();
+  }
+};
+
 // Event Listeners to Functions
 acEl.addEventListener('click', handleAcClick);
 pmEl.addEventListener('click', handlePmClick);
 percentEl.addEventListener('click', handlePercentClick);
+decimalEl.addEventListener('click', handleDecimalClick);
 
 // Event Listeners to Operatros
 additionEl.addEventListener('click', () => {
@@ -171,13 +199,7 @@ divisionEl.addEventListener('click', () => {
   handleOperatorClick('division');
 });
 
-equalEl.addEventListener('click', () => {
-  if (valueStrInMemory) {
-    setStrAsValue(getResultOfOperationAsStr());
-    // reset memory
-    resetMemory();
-  }
-});
+equalEl.addEventListener('click', handleEqualClick);
 
 // Event Listeners to numbers and decimal
 numberElArray.map((number, i) => {
@@ -187,10 +209,66 @@ numberElArray.map((number, i) => {
   });
 });
 
-decimalEl.addEventListener('click', () => {
-  const currentValueStr = getValueAsStr();
-  if (!currentValueStr.includes('.')) {
-    setStrAsValue(currentValueStr + '.');
+// Event Listeners for keydown / keyboard press
+document.addEventListener('keydown', (e) => {
+  if (!KEYDOWN_KEYS.includes(e.key)) return;
+  e.preventDefault();
+
+  switch (e.key) {
+    case '0':
+      handleNumberClick('0');
+      break;
+    case '1':
+      handleNumberClick('1');
+      break;
+    case '2':
+      handleNumberClick('2');
+      break;
+    case '3':
+      handleNumberClick('3');
+      break;
+    case '4':
+      handleNumberClick('4');
+      break;
+    case '5':
+      handleNumberClick('5');
+      break;
+    case '6':
+      handleNumberClick('6');
+      break;
+    case '7':
+      handleNumberClick('7');
+      break;
+    case '8':
+      handleNumberClick('8');
+      break;
+    case '9':
+      handleNumberClick('9');
+      break;
+    case '.':
+      handleDecimalClick();
+      break;
+    case 'Enter':
+      handleEqualClick();
+      break;
+    case '=':
+      handleEqualClick();
+      break;
+    case 'Escape':
+      handleAcClick();
+      break;
+    case '+':
+      handleOperatorClick('addition');
+      break;
+    case '-':
+      handleOperatorClick('subtraction');
+      break;
+    case '*':
+      handleOperatorClick('multiplication');
+      break;
+    case '/':
+      handleOperatorClick('division');
+      break;
   }
 });
 
