@@ -60,13 +60,13 @@ const setStrAsValue = (valueStr) => {
   const digitCount = getNumOfDigits(valueStr);
 
   if (digitCount <= 6) {
-    valueEl.style.fontSize = `clamp(4rem, 1rem + 4vw, 6rem)`;
+    valueEl.style.fontSize = `clamp(4rem, 1rem + 4vw, 5rem)`;
   } else if (digitCount === 7) {
-    valueEl.style.fontSize = `clamp(3.65rem, 1rem + 3.65vw, 5.65rem)`;
+    valueEl.style.fontSize = `clamp(3.65rem, 1rem + 3.65vw, 4.65rem)`;
   } else if (digitCount === 8) {
-    valueEl.style.fontSize = `clamp(3.25rem, 1rem + 3.25vw, 5.25rem)`;
+    valueEl.style.fontSize = `clamp(3.25rem, 1rem + 3.25vw, 4.25rem)`;
   } else if (digitCount >= 9) {
-    valueEl.style.fontSize = `clamp(2.85rem, 1rem + 2.85vw, 4.85rem)`;
+    valueEl.style.fontSize = `clamp(2.85rem, 1rem + 2.85vw, 3.85rem)`;
   }
 
   if (valueStr.at(-1) === '.') {
@@ -75,8 +75,11 @@ const setStrAsValue = (valueStr) => {
   }
   const [wholeNumStr, decimalStr] = valueStr.split('.');
   if (decimalStr) {
-    valueEl.textContent =
-      parseFloat(wholeNumStr).toLocaleString() + '.' + decimalStr;
+    valueEl.textContent = (
+      parseFloat(wholeNumStr).toLocaleString() +
+      '.' +
+      decimalStr
+    ).slice(0, 9);
   } else {
     valueEl.textContent = parseFloat(valueStr).toLocaleString();
   }

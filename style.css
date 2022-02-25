@@ -16,7 +16,7 @@
 
 body {
   display: grid;
-  place-content: center;
+  place-items: center;
   height: 100vh;
   background: var(--color-bg);
   font-family: "Helvetica Neue", sans-serif;
@@ -24,9 +24,8 @@ body {
 
 .calculator {
   background: var(--color-darkest);
-  width: clamp(18rem, 35vw, 26rem);
   height: clamp(32rem, 80vh, 60rem);
-  border-radius: clamp(2rem, 2vw, 3rem);
+  border-radius: clamp(1.65rem, 1.5vw, 2rem);
   padding: 1rem;
   color: var(--color-white);
   position: relative;
@@ -40,7 +39,7 @@ body {
 
 /* display */
 .value {
-  font-size: clamp(4rem, 1rem + 4vw, 6rem);
+  font-size: clamp(3rem, 1rem + 4vw, 6rem);
   font-weight: 200;
   margin-bottom: 2rem;
   text-align: right;
@@ -109,4 +108,17 @@ body {
 
 .clock {
   font-size: clamp(0.8rem, 0.85vw, 1.25rem);
+}
+
+footer {
+  margin-top: 2rem;
+}
+
+footer p {
+  color: var(--color-base);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: monospace;
 }
