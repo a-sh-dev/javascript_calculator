@@ -2,9 +2,9 @@
 
 ----
 
-This project is created to deepen `JavaScript` fundamentals and the `DOM`s. Built together with `HTML5` and `CSS3`. 
+This project is created to deepen `JavaScript` fundamentals and the `DOM`. Built together with `HTML5` and `CSS3`. 
 
-This project is based on Justin Kim's iPhone calculator tutorial. I modified it to be responsive and tweak it slightly to limit any long decimal values to fit the calculator screen. 
+This project is based on Justin Kim's iPhone calculator [tutorial](https://youtu.be/h6UPzVj1ncI). I modified it to be responsive, optimised it by refactoring the codes and tweaked it slightly to limit any long decimal values to fit the calculator screen. 
 
 > Live   👉🏻  https://a-sh-dev.github.io/javascript_calculator/
 
