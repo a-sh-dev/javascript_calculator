@@ -179,36 +179,39 @@ const handleEqualClick = () => {
   }
 };
 
-// Event Listeners to Functions
-acEl.addEventListener('click', handleAcClick);
-pmEl.addEventListener('click', handlePmClick);
-percentEl.addEventListener('click', handlePercentClick);
-decimalEl.addEventListener('click', handleDecimalClick);
+// Fix mobile bug for click events
+['click', 'touchstart'].forEach((e) => {
+  // Event Listeners to Functions
+  acEl.addEventListener(e, handleAcClick);
+  pmEl.addEventListener(e, handlePmClick);
+  percentEl.addEventListener(e, handlePercentClick);
+  decimalEl.addEventListener(e, handleDecimalClick);
 
-// Event Listeners to Operatros
-additionEl.addEventListener('click', () => {
-  handleOperatorClick('addition');
-});
+  // Event Listeners to Operatros
+  additionEl.addEventListener(e, () => {
+    handleOperatorClick('addition');
+  });
 
-subtractionEl.addEventListener('click', () => {
-  handleOperatorClick('subtraction');
-});
+  subtractionEl.addEventListener(e, () => {
+    handleOperatorClick('subtraction');
+  });
 
-multiplicationEl.addEventListener('click', () => {
-  handleOperatorClick('multiplication');
-});
+  multiplicationEl.addEventListener(e, () => {
+    handleOperatorClick('multiplication');
+  });
 
-divisionEl.addEventListener('click', () => {
-  handleOperatorClick('division');
-});
+  divisionEl.addEventListener(e, () => {
+    handleOperatorClick('division');
+  });
 
-equalEl.addEventListener('click', handleEqualClick);
+  equalEl.addEventListener(e, handleEqualClick);
 
-// Event Listeners to numbers and decimal
-numberElArray.map((number, i) => {
-  // console.log(number);
-  number.addEventListener('click', () => {
-    handleNumberClick(i.toString());
+  // Event Listeners to numbers and decimal
+  numberElArray.map((number, i) => {
+    // console.log(number);
+    number.addEventListener(e, () => {
+      handleNumberClick(i.toString());
+    });
   });
 });
 

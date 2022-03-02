@@ -39,7 +39,7 @@ body {
 
 /* display */
 .value {
-  font-size: clamp(3rem, 1rem + 4vw, 6rem);
+  font-size: clamp(4rem, 1rem + 4vw, 5rem);
   font-weight: 200;
   margin-bottom: 2rem;
   text-align: right;
@@ -65,8 +65,12 @@ body {
   font-weight: 200;
   cursor: pointer;
   transition: filter 0.3s;
+  border: 0;
+  color: var(--color-light);
 }
 
+.button:visited,
+.button:hover,
 .button:active,
 .button:focus {
   filter: brightness(120%);
@@ -78,6 +82,7 @@ body {
 }
 
 .operator {
+  color: var(--color-darkest);
   background: var(--color-bright);
 }
 

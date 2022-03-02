@@ -6,6 +6,8 @@ This project is created to deepen `JavaScript` fundamentals and the `DOM`. Built
 
 This project is based on Justin Kim's iPhone calculator [tutorial](https://youtu.be/h6UPzVj1ncI). I modified it to be responsive, optimised it by refactoring the codes and tweaked it slightly to limit any long decimal values to fit the calculator screen. 
 
+<sub>ℹ️ **Known issues:** Attempting to fix buttons for not working on mobile (OS).</sub>
+
 > Live   👉🏻  https://a-sh-dev.github.io/javascript_calculator/
 
 ### Preview
